@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  namespace: myproject01
+  labels:
+    app: client
+spec:
+  containers:
+    - name: client
+      image: node:18-alpine
+      command: ["node"]
+      args: ["-e", "require('http').createServer((req, res) => res.end('Client Running')).listen(3001)"]
+      ports:
+        - containerPort: 3001

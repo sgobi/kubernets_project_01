@@ -1,0 +1,31 @@
+client:
+  image: client-image
+  namespace: my-project01
+  replicas: 1
+
+server:
+  image: server-image
+  namespace: my-project01
+
+  replicas: 1
+
+grafana:
+  image: grafana/grafana
+  namespace: my-project01
+
+  replicas: 1
+  serviceType: LoadBalancer  # LoadBalancer or ClusterIP
+
+prometheus:
+  image: prom/prometheus
+  namespace: my-project01
+
+  replicas: 1
+  serviceType: LoadBalancer
+
+argocd:
+  image: argoproj/argocd
+  namespace: argocd
+
+  replicas: 1
+  serviceType: LoadBalancer

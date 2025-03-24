@@ -1,0 +1,16 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-pod
+  namespace: myproject01
+  labels:
+    app: server
+spec:
+  containers:
+    - name: server
+      image: node:18-alpine
+      command: ["node"]
+      args: ["-e", "require('http').createServer((req, res) => res.end('Server Running')).listen(5000)"]
+      ports:
+        - containerPort: 5000

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd
+  namespace: {{ .Values.namespace }}  # This sets the namespace dynamically
+spec:
+  replicas: {{ .Values.argocd.replicas }}
+  selector:
+    matchLabels:
+      app: argocd
+  template:
+    metadata:
+      labels:
+        app: argocd
+    spec:
+      containers:
+        - name: argocd
+          image: {{ .Values.argocd.image }}
+          ports:
+            - containerPort: 8080  # ArgoCD's default port
